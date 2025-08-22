@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פוליסת השקעה - מידע מפורט ושלבי התקדמות</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Assistant', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container-main {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 900px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+        
+        .header h1 {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .section {
+            background: white;
+            margin: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-content {
+            padding: 2rem;
+        }
+        
+        .about-section .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .benefits-section .section-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .pricing-section .section-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .process-section .section-header {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .contact-section .section-header {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            transform: translateX(10px);
+        }
+        
+        .benefit-icon {
+            color: #4f46e5;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        
+        .pricing-table {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            color: white;
+        }
+        
+        .pricing-header {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .pricing-row:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            border-right: 4px solid #06b6d4;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item:hover {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            transform: translateX(10px);
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .phone-button {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+        
+        .whatsapp-button {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        }
+        
+        .link-button {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            margin: 1rem 0;
+            display: inline-flex;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        
+        @media (max-width: 768px) {
+            .container-main {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .pricing-row {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-main">
+        <div class="header">
+		<p>בהמשך לשיחתנו</p>
+            <h1><i class="fas fa-chart-line ml-3"></i>פוליסת השקעה אישית</h1>
+            <p>להלן מידע מפורט ושלבי התקדמות</p>
+ <i class="fas fa-star"></i>
+		<p>רועי רומנו - מתכנן פיננסי</p>
+        </div>
+        
+        <div class="section about-section fade-in">
+            <div class="section-header">
+                <i class="fas fa-info-circle"></i>
+                אודות התכנית
+            </div>
+            <div class="section-content">
+                <p class="text-lg leading-relaxed text-gray-700">
+                  </p>  תכנית השקעה ייחודית המאפשרת לך ליהנות מניהול השקעות מקצועי של 6 מנהלי השקעות , </p>
+במגוון מסלולי השקעה ובאותה תכנית, תוך שמירה על גמישות, נזילות ושקיפות מלאה.
+                </p>
+                <div class="highlight-text mt-4">
+                    <i class="fas fa-users ml-2"></i>
+                    מנהלי ההשקעות בתכנית : ילין לפידות, אלטשולר שחם, מור, מיטב, אנליסט, הכשרה
+                </div>
+                <p class="mt-4 text-gray-600">
+<i class="fas fa-star"></i>
+                 ליווי וייעוץ אישי, משלב האפיון ופתיחת התוכנית דרך דיווחים, עדכונים, שינויים מיסוי ושירות 
+                </p>
+            </div>
+        </div>
+        
+        <div class="section benefits-section fade-in">
+            <div class="section-header">
+                <i class="fas fa-star"></i>
+                יתרונות התכנית
+            </div>
+            <div class="section-content">
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div>התכנית מבית "הכשרה" בפיקוח רשות שוק ההון במשרד האוצר</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-eye"></i></div>
+                    <div>שקיפות מלאה של תשואות עבר והשוואת ביצועים</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div>מעקב יומי אחר ביצועי הפוליסה באפליקציה ייעודית ובאזור האישי </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div>דחיית מס מובנית – תשלום המס על הרווח הריאלי ייגבה רק בעת פדיון ולא תוך כדי שינויים בתכנית</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-unlock"></i></div>
+                    <div>ללא התחייבות וללא קנסות יציאה</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-coins"></i></div>
+                    <div>ללא עלויות בנקאיות וללא עלויות משיכה/הפקדה</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-puzzle-piece"></i></div>
+                    <div>ניתן לשלב בין מספר מנהלי השקעות ובמגוון מסלולי השקעה באותה הפוליסה</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <div>ניתן לשנות את הרכב הפוליסה, ללא עלות, וללא תשלום מס רווח הון, באמצעות האפליקציה/האתר</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-percentage"></i></div>
+                    <div>דמי ניהול ידועים מראש בהתאם לסכום ההפקדה (ולא לפי רמת הסיכון, בניגוד לתיק מנוהל)</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div>פדיון בסכום חד פעמי או לשיעורין</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <div>קיימת אפשרות לקבל הלוואה על חשבון הפוליסה בכפוף לאישור החברה בתנאים מצויינים</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon"><i class="fas fa-heart"></i></div>
+                    <div>ניתן לקבוע מוטבים – בדומה לקופות גמל ובניגוד לניהול הכסף בבנק</div>
+                </div>
+                
+                <a href="https://campaigns.hcsra.co.il/tsu_cal_drploy/" target="_blank" class="cta-button link-button">
+                    <i class="fas fa-chart-line"></i>
+                    צפה בגרף התשואות האינטראקטיבי
+                </a>
+                <p class="text-sm text-gray-600 mt-2">יש לסמן את המסלולים + בתי השקעות + טווח זמן</p>
+            </div>
+        </div>
+        
+        <div class="section pricing-section fade-in">
+            <div class="section-header">
+                <i class="fas fa-calculator"></i>
+                מחירון דמי ניהול
+            </div>
+            <div class="section-content">
+                <div class="pricing-table">
+                    <div class="pricing-header">
+                        דמי ניהול בהתאם לצבירה
+                    </div>
+                    <div class="pricing-row">
+                        <span>100-250 אלף ש"ח</span>
+                        <span class="font-bold">1.05%</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span>250-500 אלף ש"ח</span>
+                        <span class="font-bold">0.95%</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span>500-1000 אלף ש"ח</span>
+                        <span class="font-bold">0.90%</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span>1 מיליון שח ומעלה</span>
+                        <span class="font-bold">0.85%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section process-section fade-in">
+            <div class="section-header">
+                <i class="fas fa-road"></i>
+                איך מתקדמים?
+            </div>
+            <div class="section-content">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div>נבצע אפיון צרכים ונבחר רמת סיכון בהתאם ליעדים ולמטרות שלך</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div>נבחר את תמהיל ההשקעה ומנהלי ההשקעות שינהלו את הכסף עבורך</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div>אכין את הטפסים לפתיחת התכנית</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div>תבצע הפקדה של הכסף לתכנית</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div>נעקוב ונהיה בקשר שוטף</div>
+                </div>
+                
+                <div class="highlight-text mt-6">
+                    <i class="fas fa-lightbulb ml-2"></i>
+                    אפיון צרכים מדויק - זה השלב הראשון והחשוב שיש לבצע
+                </div>
+            </div>
+        </div>
+        
+        <div class="section contact-section fade-in">
+            <div class="section-header">
+                <i class="fas fa-handshake"></i>
+                אם הכל ברור, אפשר לצאת לדרך 
+            </div>
+            <div class="section-content text-center">
+                <p class="text-lg text-gray-700 mb-6">
+                    אני זמין לשאלות ולהתחלת התהליך 
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="tel:052-8089808" class="cta-button phone-button">
+                        <i class="fas fa-phone"></i>
+                        להתקשר: 052-8089808
+                    </a>
+                    <a href="https://wa.me/972528089808" target="_blank" class="cta-button whatsapp-button">
+                        <i class="fab fa-whatsapp"></i>
+                        שליחת הודעה בווטסאפ
+                    </a>
+                </div>
+                
+                <p class="text-sm text-gray-500 mt-4">
+                    <i class="fas fa-clock ml-1"></i>
+                    הזמן הכי טוב לשתול עץ, הוא לפני 20 שנה. הזמן הבא הכי טוב, הוא עכשיו
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
